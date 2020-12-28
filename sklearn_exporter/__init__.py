@@ -1,7 +1,7 @@
-from sklearn_exporter.exporter import SklearnExporter
+from sklearn_exporter.piskle import Pisklizer
 
 
-sklearn_exporter = SklearnExporter()
+sklearn_exporter = Pisklizer()
 
 
 def dump(model, file):
