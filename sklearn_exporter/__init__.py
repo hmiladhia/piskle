@@ -1,12 +1,23 @@
 from sklearn_exporter.piskle import Pisklizer
+from sklearn_exporter.sklearn_piskle_partializer import SklearnPisklePartializer
+
+sklearn_piskle_partializer = SklearnPisklePartializer()
+sklearn_exporter = Pisklizer(sklearn_piskle_partializer)
 
 
-sklearn_exporter = Pisklizer()
-
-
-def dump(model, file):
-    return sklearn_exporter.dump(model, file)
+def dump(model, file, *args, **kwargs):
+    return sklearn_exporter.dump(model, file, *args, **kwargs)
 
 
 def load(file):
     return sklearn_exporter.load(file)
+
+
+from sklearn.linear_model import LinearRegression
+from sklearn.neural_network import MLPClassifier
+
+
+sklearn_piskle_partializer.register_class_attributes(LinearRegression, ['coef_', 'intercept_'])
+sklearn_piskle_partializer.register_class_attributes(MLPClassifier, ['n_features_in_', '_label_binarizer', 'classes_',
+                                                                     'n_outputs_', 'n_layers_', 'out_activation_',
+                                                                     'coefs_', 'intercepts_'])

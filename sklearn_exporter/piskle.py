@@ -13,12 +13,12 @@ class Pisklizer:
         self.serializer = serializer
 
     def dumps(self, obj, *args, **kwargs):
-        new_obj = self.partializer.from_partial_obj(obj)
+        new_obj = self.partializer.to_partial_obj(obj)
 
         return self._dumps(new_obj, *args, **kwargs)
 
     def dump(self, obj, file, *args, **kwargs):
-        new_obj = self.partializer.from_partial_obj(obj)
+        new_obj = self.partializer.to_partial_obj(obj)
 
         return self._dump(new_obj, file, *args, **kwargs)
 
@@ -26,7 +26,7 @@ class Pisklizer:
         exported_model = self._loads(bytes_object)
 
         if isinstance(exported_model, PartialObject):
-            model = self.partializer.to_partial_obj(exported_model)
+            model = self.partializer.from_partial_obj(exported_model)
         else:
             model = exported_model
 
@@ -36,7 +36,7 @@ class Pisklizer:
         exported_model = self._load(file)
 
         if isinstance(exported_model, PartialObject):
-            model = self.partializer.to_partial_obj(exported_model)
+            model = self.partializer.from_partial_obj(exported_model)
         else:
             model = exported_model
 
@@ -53,8 +53,8 @@ class Pisklizer:
 
     def _dump(self, obj, file_path, optimize=True):
         with open(file_path, 'wb') as f:
-            self._dumps(obj, optimize=optimize)
-            f.write(obj)
+            bytes_object = self._dumps(obj, optimize=optimize)
+            f.write(bytes_object)
 
     def _loads(self, bytes_object):
         assert self.serializer == 'pickle'
