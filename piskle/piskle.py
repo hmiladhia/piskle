@@ -1,8 +1,8 @@
 import pickle
 import pickletools
 
-from sklearn_exporter.partializer import PartialObject
-from sklearn_exporter.partializer import PisklePartializer
+from piskle.partializer import PartialObject
+from piskle.partializer import PisklePartializer
 
 
 class Pisklizer:

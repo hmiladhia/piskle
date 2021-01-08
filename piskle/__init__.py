@@ -1,5 +1,5 @@
-from sklearn_exporter.piskle import Pisklizer
-from sklearn_exporter.sklearn_piskle_partializer import SklearnPisklePartializer
+from piskle.piskle import Pisklizer
+from piskle.sklearn_piskle_partializer import SklearnPisklePartializer
 
 sklearn_piskle_partializer = SklearnPisklePartializer()
 sklearn_exporter = Pisklizer(sklearn_piskle_partializer)

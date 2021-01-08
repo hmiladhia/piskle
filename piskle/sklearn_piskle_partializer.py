@@ -1,6 +1,6 @@
 from sklearn import __version__ as sklearn_version
 
-from sklearn_exporter.piskle import PisklePartializer
+from piskle.piskle import PisklePartializer
 
 
 class SklearnPisklePartializer(PisklePartializer):

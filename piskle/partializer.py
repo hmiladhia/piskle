@@ -1,7 +1,7 @@
 from collections import defaultdict
 from functools import partial
 
-from sklearn_exporter.utils import get_object_class_name, import_object
+from piskle.utils import get_object_class_name, import_object
 
 
 class PartialObject(dict):
