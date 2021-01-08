@@ -1,9 +1,13 @@
-from sklearn.linear_model import LinearRegression, Lasso, Ridge, Perceptron
-from sklearn.linear_model import LogisticRegression
+from sklearn.cluster import KMeans
+from sklearn.decomposition import FastICA, PCA
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LinearRegression, LogisticRegression, Lasso, Ridge, Perceptron
 from sklearn.mixture import GaussianMixture
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier, MLPRegressor
+from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 
@@ -32,34 +36,18 @@ def init_partializer(sklearn_piskle_partializer):
                                                                          'out_activation_', 'coefs_', 'intercepts_'])
     sklearn_piskle_partializer.register_class_attributes(MLPRegressor,
                                                          ['n_layers_', 'out_activation_', 'coefs_', 'intercepts_'])
+    sklearn_piskle_partializer.register_class_attributes(SimpleImputer, ['statistics_'])
+    sklearn_piskle_partializer.register_class_attributes(StandardScaler, ['mean_', 'scale_'])
+    sklearn_piskle_partializer.register_class_attributes(FastICA, ['components_', 'mean_'])
+    sklearn_piskle_partializer.register_class_attributes(PCA, ['mean_', 'components_'])
+    sklearn_piskle_partializer.register_class_attributes(KMeans, ['_n_threads', 'cluster_centers_'])
+    sklearn_piskle_partializer.register_class_attributes(CountVectorizer, ['vocabulary_'])
+    sklearn_piskle_partializer.register_class_attributes(TfidfVectorizer, ['_tfidf', 'vocabulary_'])
+
+    sklearn_piskle_partializer.register_class_attributes(LabelEncoder, ['classes_'])
+    sklearn_piskle_partializer.register_class_attributes(OneHotEncoder, ['categories_', 'drop_idx_'])
     return sklearn_piskle_partializer
 
 
+# List of all modules:
 # https://scikit-learn.org/stable/modules/classes.html
-"""
-sklearn.linear_model.LogisticRegression
-sklearn.linear_model.Perceptron
-sklearn.linear_model.LinearRegression
-sklearn.linear_model.Ridge
-sklearn.linear_model.Lasso
-mixture.GaussianMixture
-naive_bayes.GaussianNB
-neighbors.KNeighborsClassifier
-neighbors.KNeighborsRegressor
-svm.LinearSVC
-tree.DecisionTreeRegressor
-neural_network.MLPClassifier
-neural_network.MLPRegressor
-
-sklearn.feature_extraction.text.CountVectorizer
-sklearn.feature_extraction.text.TfidfVectorizer
-sklearn.impute.SimpleImputer
-preprocessing.LabelEncoder
-preprocessing.OneHotEncoder
-preprocessing.StandardScaler
-
-
-sklearn.cluster.KMeans
-sklearn.decomposition.FastICA
-sklearn.decomposition.PCA
-"""
