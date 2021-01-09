@@ -76,8 +76,7 @@ This is still an early working version of piskle, there are still a few improvem
 - Support for "Nested" Estimators (Pipelines, RandomForests, etc...)
 
 ## Contribute
-As this is still early stage of development, if you're using piskle, you might encounter some bugs.
-
-It would be a great help to us, if you could report them in the github repo.
+As this is still a work in progress, while using piskle, you might encounter some bugs.
+It would be a great help to us, if you could **report them in the github repo**.
 
 Feel free, to share with us any potential improvements you'd like to see in piskle.
