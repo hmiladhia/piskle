@@ -4,7 +4,7 @@
 It has special support for exporting `scikit-learn`'s  models in an optimized way, 
 exporting exactly what's needed to make predictions.
 
-![Banner](https://giphy.com/embed/QVhHtKMbPZAzoKLUG2)
+![Banner](https://media.giphy.com/media/QVhHtKMbPZAzoKLUG2/giphy.gif)
 <p><a href="https://giphy.com/gifs/rickandmorty-season-3-adult-swim-rick-and-morty-QVhHtKMbPZAzoKLUG2">via GIPHY</a></p>
 
 ## Example:
