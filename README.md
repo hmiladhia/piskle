@@ -4,7 +4,8 @@
 It has special support for exporting `scikit-learn`'s  models in an optimized way, 
 exporting exactly what's needed to make predictions.
 
-<iframe src="https://giphy.com/embed/QVhHtKMbPZAzoKLUG2" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rickandmorty-season-3-adult-swim-rick-and-morty-QVhHtKMbPZAzoKLUG2">via GIPHY</a></p>
+![Banner](https://giphy.com/embed/QVhHtKMbPZAzoKLUG2)
+<p><a href="https://giphy.com/gifs/rickandmorty-season-3-adult-swim-rick-and-morty-QVhHtKMbPZAzoKLUG2">via GIPHY</a></p>
 
 ## Example:
 To use `piskle`, you first need a model to export. You can use this as an example:
@@ -76,5 +77,7 @@ This is still an early working version of piskle, there are still a few improvem
 
 ## Contribute
 As this is still early stage of development, if you're using piskle, you might encounter some bugs.
+
 It would be a great help to us, if you could report them in the github repo.
+
 Feel free, to share with us any potential improvements you'd like to see in piskle.
