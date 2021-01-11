@@ -86,7 +86,8 @@ Feel free, to share with us any potential improvements you'd like to see in pisk
 
 If you like the project and want to support us, you can buy us a coffee here:
 
-<a href="https://www.buymeacoffee.com/amal.hasni" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 108px !important;" ></a>
+<a href="https://www.buymeacoffee.com/amal.hasni" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 
 
 
