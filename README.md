@@ -1,4 +1,7 @@
 # Piskle
+
+![pyversions](https://img.shields.io/pypi/pyversions/piskle) ![wheel](https://img.shields.io/pypi/wheel/piskle) ![license](https://img.shields.io/pypi/l/piskle) ![version](https://img.shields.io/pypi/v/piskle)
+
 `Piskle` allows you to selectively serialize python objects to save on memory and load times. 
 
 It has special support for exporting `scikit-learn`'s  models in an optimized way, 
