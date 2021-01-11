@@ -1,11 +1,8 @@
 from collections import defaultdict
 from functools import partial
 
+from piskle import PartialObject
 from piskle.utils import get_object_class_name, import_object
-
-
-class PartialObject(dict):
-    pass
 
 
 class PisklePartializer:
@@ -57,7 +54,7 @@ class PisklePartializer:
     def default_partializer(self, obj, params_dict=None, version=None, obj_attributes=None):
         obj_attributes = [] if obj_attributes is None else obj_attributes
 
-        # TODO: include module version: in meta or in version ?
+        meta_dict = None if version is None else {'version': version}
 
         # Getting the attributes
         model_vars = vars(obj)
@@ -69,6 +66,10 @@ class PisklePartializer:
             attributes=attributes_dict,
             params=params_dict
         )
+
+        if meta_dict:
+            partial_obj['meta'] = meta_dict
+
         return partial_obj
 
     def register_class_attributes(self, class_, attributes, version):

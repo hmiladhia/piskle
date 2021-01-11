@@ -1,0 +1,2 @@
+class PartialObject(dict):
+    pass

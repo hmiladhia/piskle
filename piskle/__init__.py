@@ -1,3 +1,4 @@
+from piskle.partial_object import PartialObject
 from piskle.piskle import Pisklizer
 from piskle.sklearn_piskle_partializer import SklearnPisklePartializer
 from piskle._piskle_initializer import init_partializer as _init_partializer
