@@ -40,7 +40,30 @@ Note that this feature reduces the size of the exported file even further and im
 piskle.dump(model, 'model.pskl', optimize=False)
 ```
 
+## Future Improvements
+This is still an early working version of piskle, there are still a few improvements planned:
+- More thorough testing
+- Version Management: Support for more versions of scikit-learn (earlier versions)
+- Support for more Estimators (Feel free to contact us for a specific request)
+- Support for "Nested" Estimators (Pipelines, RandomForests, etc...)
+- Support for other serialization methods (such as joblib, shelve or json...)
+
+## Contribute
+As this is still a work in progress, while using piskle, you might encounter some bugs.
+It would be a great help to us, if you could **report them in the github repo**.
+
+Feel free, to share with us any potential improvements you'd like to see in piskle.
+
+
+
+If you like the project and want to support us, you can buy us a coffee here:
+
+<a href="https://www.buymeacoffee.com/amal.hasni" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
+
 ## Currently Supported Models
+
 ### Predictors ( Classifiers, Regressors, ...)
 |       Estimator        |       Reference        |
 | :--------------------: | :--------------------: |
@@ -70,27 +93,3 @@ piskle.dump(model, 'model.pskl', optimize=False)
 | StandardScaler  |      sklearn.preprocessing      |
 |  LabelEncoder   |      sklearn.preprocessing      |
 |  OneHotEncoder  |      sklearn.preprocessing      |
-
-## Future Improvements
-This is still an early working version of piskle, there are still a few improvements planned:
-- More thorough testing
-- Version Management: Support for more versions of scikit-learn (earlier versions)
-- Support for more Estimators (Feel free to contact us for a specific request)
-- Support for "Nested" Estimators (Pipelines, RandomForests, etc...)
-- Support for other serialization methods (such as joblib, shelve or json...)
-
-## Contribute
-As this is still a work in progress, while using piskle, you might encounter some bugs.
-It would be a great help to us, if you could **report them in the github repo**.
-
-Feel free, to share with us any potential improvements you'd like to see in piskle.
-
-
-
-If you like the project and want to support us, you can buy us a coffee here:
-
-<a href="https://www.buymeacoffee.com/amal.hasni" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-
-
-
