@@ -23,4 +23,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    keywords=['serialization', 'scikit-learn', 'export', 'pickle', 'models', 'objects', 'joblib', 'estimators'],
 )
