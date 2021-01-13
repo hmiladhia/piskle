@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="piskle",
-    version="0.0.2.dev1",
+    version="0.1.1",
     author="Amal HASNI, Dhia HMILA",
     author_email="emerald.snippets@gmail.com",
     description="Piskle allows you to selectively and efficiently serialize scikit-learn models "
