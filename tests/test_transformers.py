@@ -1,5 +1,4 @@
 import warnings
-import random
 
 import pytest
 from sklearn import datasets
@@ -9,13 +8,7 @@ from sklearn.impute import SimpleImputer
 
 import piskle
 from utils import compare_size
-
-
-def load_texts(n=1000):
-    lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure delectus, nisi laudantium a sint pariatur " \
-            "officiis minus, laboriosam eius possimus repellat error ut itaque, blanditiis doloremque veritatis neque " \
-            "tempora eum. "
-    return [lorem[:random.randint(1, len(lorem))] for _ in range(n)]
+from utils import load_texts
 
 
 def information_loss(model1, model2, X_test):
