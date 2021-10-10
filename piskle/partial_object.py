@@ -15,17 +15,29 @@ class PartialObjectBase(UserDict, ABC):
 
 
 class PartialObject(PartialObjectBase):
+    common = None
+
     @property
     def class_name(self):
+        if self.common:
+            return self.data.get('class_name', self.common.class_name)
         return self.data['class_name']
 
     @property
     def attributes(self):
-        return self.data['attributes']
+        attributes_dict = {}
+        if self.common:
+            attributes_dict.update(self.common.get('attributes', {}))
+        attributes_dict.update(self.data['attributes'])
+        return attributes_dict
 
     @property
     def params(self):
-        return self.data.get('params', {})
+        params_dict = {}
+        if self.common:
+            params_dict.update(self.common.params)
+        params_dict.update(self.data.get('params', {}))
+        return params_dict
 
     @property
     def fullobject(self) -> object:
