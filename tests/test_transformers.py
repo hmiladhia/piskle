@@ -49,7 +49,7 @@ def test_numerical_transformers_models(model_class):
 
     assert information_loss(piskle_model, model, X)
 
-    original_size, piskle_size = compare_size(model, model_bytes)
+    original_size, piskle_size = compare_size(model)
     assert original_size >= piskle_size
 
 
@@ -69,5 +69,5 @@ def test_text_transformers_models(model_class):
 
     assert information_loss_sparse(piskle_model, model, X)
 
-    original_size, piskle_size = compare_size(model, model_bytes, perc=5)
+    original_size, piskle_size = compare_size(model, perc=5)
     assert original_size >= piskle_size

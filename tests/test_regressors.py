@@ -37,7 +37,7 @@ def test_regression_models(model_class):
 
     assert information_loss(piskle_model, model, X, y)
 
-    original_size, piskle_size = compare_size(model, model_bytes)
+    original_size, piskle_size = compare_size(model)
     assert original_size >= piskle_size
 
 

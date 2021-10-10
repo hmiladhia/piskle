@@ -40,7 +40,7 @@ def test_classification_models(model_class):
 
     assert information_loss(piskle_model, model, X, y)
 
-    original_size, piskle_size = compare_size(model, model_bytes, perc=10)
+    original_size, piskle_size = compare_size(model, perc=10)
     assert original_size >= piskle_size
 
 
