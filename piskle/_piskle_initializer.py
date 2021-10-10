@@ -10,7 +10,7 @@ from sklearn.neural_network import MLPClassifier, MLPRegressor
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.pipeline import Pipeline
 
 from piskle.partializer import list_partializer
@@ -55,14 +55,11 @@ def init_partializer(sklearn_piskle_partializer):
     sklearn_piskle_partializer.register_class_attributes(LabelEncoder, ['classes_'])
     sklearn_piskle_partializer.register_class_attributes(OneHotEncoder, ['categories_', 'drop_idx_'])
     sklearn_piskle_partializer.register_class_attributes(Pipeline, ['steps'])
-    sklearn_piskle_partializer.register_class_attributes(RandomForestClassifier, ['base_estimator',
-                                                                                  'n_features_in_',
-                                                                                  'n_features_',
-                                                                                  'n_outputs_',
+    sklearn_piskle_partializer.register_class_attributes(RandomForestClassifier, ['n_outputs_',
                                                                                   'classes_',
                                                                                   'n_classes_',
-                                                                                  'base_estimator_',
                                                                                   'estimators_'])
+    sklearn_piskle_partializer.register_class_attributes(RandomForestRegressor, ['n_outputs_', 'estimators_'])
     return sklearn_piskle_partializer
 
 
