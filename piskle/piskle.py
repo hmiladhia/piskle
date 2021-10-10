@@ -26,7 +26,7 @@ class Pisklizer:
         exported_model = self._loads(bytes_object)
 
         if isinstance(exported_model, PartialObject):
-            model = self.partializer.from_partial_obj(exported_model)
+            model = exported_model.fullobject
         else:
             model = exported_model
 
@@ -36,7 +36,7 @@ class Pisklizer:
         exported_model = self._load(file)
 
         if isinstance(exported_model, PartialObject):
-            model = self.partializer.from_partial_obj(exported_model)
+            model = exported_model.fullobject
         else:
             model = exported_model
 

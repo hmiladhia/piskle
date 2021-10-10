@@ -2,27 +2,13 @@ from collections import defaultdict
 from functools import partial
 
 from piskle import PartialObject
-from piskle.utils import get_object_class_name, import_object
+from piskle.utils import get_object_class_name
 
 
 class PisklePartializer:
     def __init__(self):
         self.class_attrs_dict = defaultdict(dict)
         self.custom_partializer_dict = defaultdict(dict)
-
-    def from_partial_obj(self, partial_obj: PartialObject):
-        # TODO: warning on sklearn version metadata mismatch
-        # Getting the estimator class
-        obj_class = import_object(*partial_obj['class_name'])
-
-        # Instantiating the estimator
-        model = obj_class(**partial_obj['params'])
-
-        # Assigning the attributes to the estimator
-        for attribute_name, attribute_value in partial_obj['attributes'].items():
-            setattr(model, attribute_name, attribute_value)
-
-        return model
 
     def to_partial_obj(self, obj, params_dict=None, version=None) -> PartialObject:
         version = self.get_default_version(obj, version) if version is None else version
