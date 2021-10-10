@@ -15,27 +15,29 @@ class PartialObjectBase(UserDict, ABC):
 
 
 class PartialObject(PartialObjectBase):
-    common = None
-
     @property
     def class_name(self):
-        if self.common:
-            return self.data.get('class_name', self.common.class_name)
+        common = getattr(self, 'common', None)
+        if common:
+            return self.data.get('class_name', common.class_name)
         return self.data['class_name']
 
     @property
     def attributes(self):
         attributes_dict = {}
-        if self.common:
-            attributes_dict.update(self.common.get('attributes', {}))
+
+        common = getattr(self, 'common', None)
+        if common:
+            attributes_dict.update(common.get('attributes', {}))
         attributes_dict.update(self.data['attributes'])
         return attributes_dict
 
     @property
     def params(self):
         params_dict = {}
-        if self.common:
-            params_dict.update(self.common.params)
+        common = getattr(self, 'common', None)
+        if common:
+            params_dict.update(common.params)
         params_dict.update(self.data.get('params', {}))
         return params_dict
 
@@ -69,5 +71,14 @@ class PartialObjectList(PartialObjectBase):
         return type(self.content)
 
     @property
+    def common(self):
+        return self.data.get('common', None)
+
+    @property
     def fullobject(self) -> object:
-        return self.type((obj.fullobject if isinstance(obj, PartialObjectBase) else obj for obj in self.content))
+        object_list = []
+        for obj in self.content:
+            if self.common:
+                obj.common = self.common
+            object_list.append(obj.fullobject if isinstance(obj, PartialObjectBase) else obj)
+        return self.type(object_list)

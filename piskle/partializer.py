@@ -22,7 +22,7 @@ class PisklePartializer:
         if partialize is None:
             return obj
 
-        return partialize(self, obj, version=version)
+        return partialize(self, obj)
 
     def get_partializer(self, obj, version):
         obj_class = type(obj)
@@ -79,9 +79,7 @@ def list_partializer(partializer, obj, **meta_dict):
     partial_obj = PartialObjectList(content=type_([partializer.to_partial_obj(o) for o in obj]))
 
     if same_type_list and all(isinstance(o, PartialObject) for o in partial_obj.content):
-        common = factorize_partial_obj(partial_obj.content)
-        for o in partial_obj['content']:
-            o.common = common
+        partial_obj['common'] = factorize_partial_obj(partial_obj.content)
 
     if meta_dict:
         partial_obj['meta'] = meta_dict
@@ -121,9 +119,19 @@ def factorize_dict(dicts: list):
     common = {}
     for key in keys:
         value = sample_dict[key]
-        if all(d[key] is value for d in dicts[1:]):
+        if all(equal(d[key], value) for d in dicts[1:]):
             for d in dicts:
                 d.pop(key, None)
             common[key] = value
 
     return common
+
+
+def equal(obj1, obj2):
+    try:
+        return bool(obj1 == obj2)
+    except ValueError:
+        try:
+            return all(obj1 == obj2)
+        except Exception:
+            return obj1 is obj2
