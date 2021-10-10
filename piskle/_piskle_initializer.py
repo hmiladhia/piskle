@@ -52,7 +52,7 @@ def init_partializer(sklearn_piskle_partializer):
     sklearn_piskle_partializer.register_class_attributes(CountVectorizer, ['vocabulary_'])
     sklearn_piskle_partializer.register_class_attributes(TfidfVectorizer, ['_tfidf', 'vocabulary_'])
 
-    sklearn_piskle_partializer.register_class_attributes(LabelEncoder, ['classes_'])
+    # sklearn_piskle_partializer.register_class_attributes(LabelEncoder, ['classes_'])
     sklearn_piskle_partializer.register_class_attributes(OneHotEncoder, ['categories_', 'drop_idx_'])
     sklearn_piskle_partializer.register_class_attributes(Pipeline, ['steps'])
     sklearn_piskle_partializer.register_class_attributes(RandomForestClassifier, ['n_outputs_',
