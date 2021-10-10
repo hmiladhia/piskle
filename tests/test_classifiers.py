@@ -10,6 +10,7 @@ from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
 
 import piskle
+from utils import compare_size
 
 
 def information_loss(uploaded_model, model, X_test, y_test):
@@ -34,10 +35,12 @@ def test_classification_models(model_class):
         warnings.simplefilter("ignore")
         model = model_class().fit(X, y)
 
-    model_bytes = piskle.dumps(model)
+    model_bytes = piskle.dumps(model, optimize=False)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss(piskle_model, model, X, y)
 
+    original_size, piskle_size = compare_size(model, model_bytes, perc=10)
+    assert original_size >= piskle_size
 
 

@@ -8,6 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.impute import SimpleImputer
 
 import piskle
+from utils import compare_size
 
 
 def load_texts(n=1000):
@@ -43,10 +44,13 @@ def test_numerical_transformers_models(model_class):
         warnings.simplefilter("ignore")
         model = model_class().fit(X)
 
-    model_bytes = piskle.dumps(model)
+    model_bytes = piskle.dumps(model, optimize=False)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss(piskle_model, model, X)
+
+    original_size, piskle_size = compare_size(model, model_bytes)
+    assert original_size >= piskle_size
 
 
 @pytest.mark.parametrize('model_class', [
@@ -60,7 +64,10 @@ def test_text_transformers_models(model_class):
         warnings.simplefilter("ignore")
         model = model_class().fit(X)
 
-    model_bytes = piskle.dumps(model)
+    model_bytes = piskle.dumps(model, optimize=False)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss_sparse(piskle_model, model, X)
+
+    original_size, piskle_size = compare_size(model, model_bytes, perc=5)
+    assert original_size >= piskle_size

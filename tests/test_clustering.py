@@ -6,6 +6,7 @@ from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
 
 import piskle
+from utils import compare_size
 
 
 def information_loss(model1, model2, X_test):
@@ -25,7 +26,10 @@ def test_unsupervised_models(model_class):
         warnings.simplefilter("ignore")
         model = model_class().fit(X)
 
-    model_bytes = piskle.dumps(model)
+    model_bytes = piskle.dumps(model, optimize=False)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss(piskle_model, model, X)
+
+    original_size, piskle_size = compare_size(model, model_bytes, perc=5)
+    assert original_size >= piskle_size

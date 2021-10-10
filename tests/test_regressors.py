@@ -8,6 +8,7 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.tree import DecisionTreeRegressor
 
 import piskle
+from utils import compare_size
 
 
 def information_loss(uploaded_model, model, X_test, y_test):
@@ -31,10 +32,13 @@ def test_regression_models(model_class):
         warnings.simplefilter("ignore")
         model = model_class().fit(X, y)
 
-    model_bytes = piskle.dumps(model)
+    model_bytes = piskle.dumps(model, optimize=False)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss(piskle_model, model, X, y)
+
+    original_size, piskle_size = compare_size(model, model_bytes)
+    assert original_size >= piskle_size
 
 
 
