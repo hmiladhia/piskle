@@ -10,9 +10,16 @@ from sklearn.neural_network import MLPClassifier, MLPRegressor
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+from sklearn.pipeline import Pipeline
+
+from piskle.partializer import list_partializer
 
 
 def init_partializer(sklearn_piskle_partializer):
+    sklearn_piskle_partializer.register_custom_partializer(list, list_partializer)
+    sklearn_piskle_partializer.register_custom_partializer(set, list_partializer)
+    sklearn_piskle_partializer.register_custom_partializer(tuple, list_partializer)
+
     sklearn_piskle_partializer.register_class_attributes(LinearRegression, ['coef_', 'intercept_'])
     sklearn_piskle_partializer.register_class_attributes(LogisticRegression, ['classes_', 'coef_', 'intercept_'])
     sklearn_piskle_partializer.register_class_attributes(DecisionTreeClassifier,
@@ -46,6 +53,7 @@ def init_partializer(sklearn_piskle_partializer):
 
     sklearn_piskle_partializer.register_class_attributes(LabelEncoder, ['classes_'])
     sklearn_piskle_partializer.register_class_attributes(OneHotEncoder, ['categories_', 'drop_idx_'])
+    sklearn_piskle_partializer.register_class_attributes(Pipeline, ['steps'])
     return sklearn_piskle_partializer
 
 

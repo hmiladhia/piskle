@@ -28,7 +28,7 @@ class PartialObject(PartialObjectBase):
         return self.data.get('params', {})
 
     @property
-    def fullobject(self):
+    def fullobject(self) -> object:
         # Getting object class
         obj_class = import_object(*self.class_name)
 
@@ -45,3 +45,17 @@ class PartialObject(PartialObjectBase):
             setattr(model, attribute_name, attribute_value)
 
         return model
+
+
+class PartialObjectList(PartialObjectBase):
+    @property
+    def content(self):
+        return self.data['content']
+
+    @property
+    def type(self):
+        return type(self.content)
+
+    @property
+    def fullobject(self) -> object:
+        return self.type((obj.fullobject if isinstance(obj, PartialObjectBase) else obj for obj in self.content))

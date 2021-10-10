@@ -30,5 +30,5 @@ def test_pipeline():
 
     assert information_loss(piskle_model, model, X, y)
 
-    original_size, piskle_size = compare_size(model, perc=5)
+    original_size, piskle_size = compare_size(model, perc=0)
     assert original_size >= piskle_size
