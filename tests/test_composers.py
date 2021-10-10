@@ -25,7 +25,7 @@ def test_pipeline():
         warnings.simplefilter("ignore")
         model = model.fit(X, y)
 
-    model_bytes = piskle.dumps(model, optimize=False)
+    model_bytes = piskle.dumps(model)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss(piskle_model, model, X, y)

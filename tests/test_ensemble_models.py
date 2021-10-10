@@ -2,12 +2,7 @@ import warnings
 
 import pytest
 from sklearn import datasets
-from sklearn.linear_model import LogisticRegression, Perceptron
-from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.svm import LinearSVC
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 import piskle
 from utils import compare_size
@@ -20,15 +15,9 @@ def information_loss(uploaded_model, model, X_test, y_test):
 
 
 @pytest.mark.parametrize('model_class', [
-    LogisticRegression,
-    Perceptron,
-    GaussianNB,
-    KNeighborsClassifier,
-    MLPClassifier,
-    LinearSVC,
-    DecisionTreeClassifier,
+    RandomForestClassifier,
 ])
-def test_classification_models(model_class):
+def test_ensemble_models(model_class):
     X, y = datasets.load_iris(return_X_y=True)
 
     with warnings.catch_warnings():
@@ -40,7 +29,7 @@ def test_classification_models(model_class):
 
     assert information_loss(piskle_model, model, X, y)
 
-    original_size, piskle_size = compare_size(model, perc=10)
+    original_size, piskle_size = compare_size(model, perc=0)
     assert original_size >= piskle_size
 
 

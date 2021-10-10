@@ -32,7 +32,7 @@ def test_regression_models(model_class):
         warnings.simplefilter("ignore")
         model = model_class().fit(X, y)
 
-    model_bytes = piskle.dumps(model, optimize=False)
+    model_bytes = piskle.dumps(model)
     piskle_model = piskle.loads(model_bytes)
 
     assert information_loss(piskle_model, model, X, y)
