@@ -3,9 +3,12 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open("piskle/VERSION", "r", encoding="utf-8") as fh:
+    version = fh.read().strip()
+
 setuptools.setup(
     name="piskle",
-    version="0.1.2",
+    version=version,
     author="Amal HASNI, Dhia HMILA",
     author_email="emerald.snippets@gmail.com",
     description="Piskle allows you to selectively and efficiently serialize scikit-learn models "
@@ -15,7 +18,8 @@ setuptools.setup(
     license='MIT',
     url="https://github.com/hmiladhia/piskle",
     packages=['piskle'],
-    install_requires=['scikit-learn==0.24.0'],
+    install_requires=['scikit-learn>=0.23.0'],
+include_package_data=True,
     classifiers=[
         "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",

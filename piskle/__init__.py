@@ -1,3 +1,6 @@
+from os.path import dirname as _dir
+from os.path import join as _join
+
 from piskle.piskle import Pisklizer
 from piskle.sklearn_piskle_partializer import SklearnPisklePartializer
 from piskle._piskle_initializer import init_partializer as _init_partializer
@@ -5,7 +8,8 @@ from piskle._piskle_initializer import init_partializer as _init_partializer
 sklearn_piskle_partializer = _init_partializer(SklearnPisklePartializer())
 sklearn_exporter = Pisklizer(sklearn_piskle_partializer)
 
-__version__ = '0.2.0'
+with open(_join(_dir(__file__), 'VERSION'), "r", encoding="utf-8") as fh:
+    __version__ = fh.read().strip()
 
 
 def dump(model, file, *args, **kwargs):
